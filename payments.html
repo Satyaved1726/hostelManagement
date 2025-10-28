@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hostel Payment</title>
+  <link rel="stylesheet" href="payments.css">
+</head>
+<body>
+  <main class="container">
+    <header class="topbar">
+      <h1>Hostel Booking & Payment</h1>
+      <a href="/" class="back-link">← Back to site</a>
+    </header>
+
+    <section class="room-summary card">
+      <h2 id="room-name">Room</h2>
+      <p id="room-info">Loading room details...</p>
+      <ul class="room-meta">
+        <li><strong>Cost (per month):</strong> <span id="room-cost">-</span></li>
+        <li><strong>Sharing options:</strong> <span id="room-sharing">-</span></li>
+      </ul>
+    </section>
+
+    <section class="booking card">
+      <h3>Booking Form</h3>
+      <form id="booking-form" novalidate>
+        <div class="form-row">
+          <label for="fullName">Full name</label>
+          <input id="fullName" name="fullName" type="text" placeholder="John Doe" required />
+        </div>
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+        </div>
+        <div class="form-row">
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" placeholder="9876543210" required />
+        </div>
+        <div class="form-row">
+          <label for="duration">Duration</label>
+          <select id="duration" name="duration" required>
+            <option value="1">1 month</option>
+            <option value="3">3 months</option>
+            <option value="4">Semester (4 months)</option>
+            <option value="6">6 months</option>
+          </select>
+        </div>
+
+        <div class="form-actions">
+          <button id="pay-btn" type="submit" class="primary">Proceed to Pay</button>
+        </div>
+      </form>
+    </section>
+
+    <aside class="summary card">
+      <h3>Payment Summary</h3>
+      <div class="summary-row"><span>Room:</span> <span id="sum-room">—</span></div>
+      <div class="summary-row"><span>Monthly cost:</span> <span id="sum-monthly">—</span></div>
+      <div class="summary-row"><span>Duration:</span> <span id="sum-duration">—</span></div>
+      <div class="summary-row total"><span>Total:</span> <span id="sum-total">—</span></div>
+    </aside>
+
+    <div id="confirmation" class="card confirmation hidden">
+      <h2>Booking Confirmed</h2>
+      <p id="confirm-msg">Thank you — your booking is confirmed.</p>
+      <p><strong>Booking ID:</strong> <span id="confirm-id">-</span></p>
+      <div class="confirm-actions">
+        <a href="/" class="btn">Return to Home</a>
+      </div>
+    </div>
+
+    <footer class="foot">&copy; Hostel Management</footer>
+  </main>
+
+  <script src="payment.js"></script>
+</body>
+</html>

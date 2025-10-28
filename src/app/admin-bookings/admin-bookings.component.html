@@ -1,0 +1,48 @@
+<div class="container mt-3">
+  <div class="card p-3">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <h3 class="mb-0">Bookings</h3>
+      <div>
+        <button class="btn btn-sm btn-outline-primary" (click)="loadBookings()">Refresh</button>
+      </div>
+    </div>
+
+    <div *ngIf="loading" class="text-center">Loading bookings…</div>
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+    <div *ngIf="!loading && bookings.length === 0" class="text-muted">No bookings found.</div>
+
+    <div *ngIf="bookings.length > 0" class="table-responsive">
+      <table class="table table-striped table-sm">
+        <thead>
+          <tr>
+            <th>Booking ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Room</th>
+            <th>Duration</th>
+            <th>Total</th>
+            <th>Payment</th>
+            <th>Status</th>
+            <th>Created At</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let b of bookings">
+            <td>{{ b._id }}</td>
+            <td>{{ b.name }}</td>
+            <td>{{ b.email }}</td>
+            <td>{{ b.phone }}</td>
+            <td>{{ b.room }}</td>
+            <td>{{ b.duration }}</td>
+            <td>₹ {{ b.total | number }}</td>
+            <td>{{ b.paymentMethod || '-' }}</td>
+            <td>{{ b.status || '-' }}</td>
+            <td>{{ fmt(b.createdAt) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
